@@ -1,6 +1,6 @@
 <?php
 
-define('PLUGIN_FIXMAILCOLLECTOR_VERSION', '1.0.0');
+define('PLUGIN_FIXMAILCOLLECTOR_VERSION', '1.0.1');
 
 $folder = basename(dirname(__FILE__));
 
@@ -17,6 +17,7 @@ function plugin_init_fixmailcollector() {
    // Prioritize the localfile instead of vendor
    spl_autoload_register(function ($class) {
       if ($class === 'Laminas\Mail\Header\ContentDisposition') {
+         include __DIR__ . '/Normalizer.php';
          include __DIR__ . '/ContentDisposition.php';
       }
    }, true, true);
@@ -36,6 +37,7 @@ function plugin_version_fixmailcollector() {
       'requirements'   => [
          'glpi' => [
             'min' => '9.5',
+            'max' => '9.5.4',
          ]
       ]
    ];

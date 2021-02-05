@@ -8,6 +8,7 @@
 
 namespace Laminas\Mail\Header;
 
+use glen\FilenameNormalizer\Normalizer;
 use Laminas\Mail\Headers;
 use Laminas\Mime\Mime;
 
@@ -245,6 +246,10 @@ class ContentDisposition implements UnstructuredInterface
          throw new \Laminas\Mail\Header\Exception\InvalidArgumentException(
               'Invalid content-disposition parameter name detected (too long)'
           );
+      }
+
+      if ($name === 'filename') {
+         $value = Normalizer::normalize($value);
       }
 
       $this->parameters[$name] = $value;
