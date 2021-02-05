@@ -31,7 +31,7 @@ function plugin_version_fixmailcollector() {
       'version'        => PLUGIN_FIXMAILCOLLECTOR_VERSION,
       'author'         => 'Edgard Lorraine Messias',
       'homepage'       => 'https://github.com/edgardmessias/glpi-fixmailcollector',
-      'license'        => 'MIT',
+      'license'        => 'GPL v2+',
       'minGlpiVersion' => '9.5',
       'requirements'   => [
          'glpi' => [
