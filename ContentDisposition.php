@@ -87,6 +87,13 @@ class ContentDisposition implements UnstructuredInterface
                }
                $value .= $values[$i];
             }
+
+            // Fix malformed header
+            if (strncmp($value, '=?', 2) === 0) {
+               $value = preg_replace('/\?\=\=\?[\w-]+\?\w\?/', '', $value);
+               $value = HeaderWrap::mimeDecodeValue($value);
+            }
+
             $header->setParameter($name, $value);
          }
       }
